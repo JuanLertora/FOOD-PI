@@ -27,6 +27,16 @@ router.get('/:id', (req,res)=>{
     .catch(()=>{res.send('Esta id no existe')})
 })
 
+router.get('/recipe/:diet',(req,res)=>{
+    let {name} = req.query;
+    let {diet} = req.params
+    axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${name}&apiKey=${MY_APIKEY}&number=20&addRecipeInformation=true/${diet}`)
+    .then((resultado) => resultado.data)
+    .then((resultado) => res.send(resultado))
+    .catch(() => res.status().send("Esa receta no existe"));
+})
+
+
 
 
 
