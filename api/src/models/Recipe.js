@@ -10,28 +10,28 @@ module.exports = (sequelize) =>{
       primaryKey: true,
     },
   
-    nombre: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   
-    Descripcion: {
+    descripcion: {
       type: DataTypes.TEXT,
       allowNull: false,
   
     },
   
-    Puntuacion: {
+    puntuacion: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+    
   
     },
   
-    ComidaSaludable: {
+    comidasaludable: {
       type: DataTypes.STRING,
     },
     
-    PasoAPaso: {
+    pasoapaso: {
       type: DataTypes.TEXT,
   },
 })}
