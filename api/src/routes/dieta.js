@@ -1,10 +1,8 @@
 const {Router} = require('express');
+const { getDiets } = require('../controlador/dietaindex');
 
 const router = Router()
 
-router.get('/', (req,res)=>{
-
-res.send('no todo mal')
-})
+router.get('/types',getDiets) 
 
 module.exports = router;

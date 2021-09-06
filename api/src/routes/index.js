@@ -11,6 +11,7 @@ const router = Router();
 
 // Configurar los routers
 router.use('/', recipe);
+router.use('/', dieta);
 
 
 

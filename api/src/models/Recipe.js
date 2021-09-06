@@ -34,5 +34,5 @@ module.exports = (sequelize) =>{
     pasoapaso: {
       type: DataTypes.TEXT,
   },
-})}
+},{     timestamps: false   })}
 
