@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { MY_APIKEY } = process.env
-const { Recipe, Dieta } = require('../db')
+const { Recipe, Diet } = require('../db')
 const axios = require('axios')
 const { v4: uuidv4 } = require('uuid');
 const { Op } = require('sequelize');
@@ -9,7 +9,7 @@ const { Op } = require('sequelize');
 async function APIcall() {
     try {
         const recipeApi = await axios.get(
-            `https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_APIKEY}&addRecipeInformation=true&number=100`
+            `https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_APIKEY}&addRecipeInformation=true&number=5`
         );
         const requiredInfo = recipeApi.data.results.map((recipe) => {
             return {
@@ -43,7 +43,7 @@ async function getAll(req, res, next) {
             const informacionAPI = await APIcall()
             const informacionDB = await Recipe.findAll({
                     include: {
-                      model: Dieta,
+                      model: Diet,
                       attributes: ["nombre"],
                       through: {
                         attributes: [],
@@ -72,7 +72,7 @@ async function getAll(req, res, next) {
                     title: `${nombreAbuscar}`
                 },
                 include: {
-                    model: Dieta,
+                    model: Diet,
                     attributes: ["nombre"],
                     through: {
                         attributes: []
@@ -109,7 +109,7 @@ async function Postear(req, res, next) {
             id: uuidv4(),
         });
         if (diets) {
-            const dietDb = await Dieta.findAll({
+            const dietDb = await Diet.findAll({
                 where: {
                     nombre: diets
                 },
@@ -118,7 +118,7 @@ async function Postear(req, res, next) {
                 ]
             }
             )
-            newRecipe.addDieta(dietDb)
+            newRecipe.addDiet(dietDb)
         }
         res.send("Fue creada con exito")
     }

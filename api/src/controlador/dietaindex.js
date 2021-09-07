@@ -1,4 +1,4 @@
-const {Dieta} = require('../db');
+const {Diet} = require('../db');
 
 
 const diets= [
@@ -16,11 +16,11 @@ const diets= [
 
 async function getDiets (req, res) {
     try {
-        const resp = await Dieta.findAll()
+        const resp = await Diet.findAll()
         if(resp.length > 0) return res.json(resp)
         
         else{ try{
-           const dietDb = await Dieta.bulkCreate(diets)
+           const dietDb = await Diet.bulkCreate(diets)
             return res.json(dietDb)
         }
         catch(err) {

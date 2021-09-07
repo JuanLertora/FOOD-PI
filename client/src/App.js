@@ -1,11 +1,19 @@
+import React from "react";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import './App.css';
+import RecipesHome from "./componentes/RecipesHome/RecipesHome";
+import Inicio from "./componentes/PaginaInicial/Inicio";
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Food</h1>
-    </div>
-  );
+   
+      <Router>
+      <Route exact path="/" component={Inicio} />
+      <Route exact path="/home" component={RecipesHome} />
+      </Router>  
+      
+      );
 }
 
 export default App;
