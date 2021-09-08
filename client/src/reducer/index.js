@@ -1,7 +1,8 @@
-import {GET_RECIPES} from '../actions/index';
+import {GET_RECIPES, GET_RECIPE_DETAIL,GET_RECIPE_BY_NAME} from '../actions/index';
 
 const initialState = {
-    recipe: [],
+    recipes: [],
+    singlerecipe: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -9,8 +10,18 @@ const reducer = (state = initialState, action) => {
         case GET_RECIPES:
             return {
                 ...state,
-                recipe: action.payload,
+                recipes: action.payload,
             };
+        case GET_RECIPE_DETAIL:
+                return {
+                    ...state,
+                    singlerecipe: action.payload,
+                };
+        case GET_RECIPE_BY_NAME:
+                return {
+                    ...state,
+                    singlerecipe: action.payload,
+                };
         default:
             return {
                 ...state

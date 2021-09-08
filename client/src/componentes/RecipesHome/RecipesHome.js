@@ -26,7 +26,7 @@ function RecipesHome({ recipe, getRecipes }) {
 const mapStateToProps = (state) => {
 
     return {
-        recipe: state.recipe
+        recipe: state.recipes
     }
 }
 

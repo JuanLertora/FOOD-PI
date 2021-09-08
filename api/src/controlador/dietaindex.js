@@ -2,15 +2,15 @@ const {Diet} = require('../db');
 
 
 const diets= [
-    {nombre: "gluten free"},
-    {nombre: "dairy free"},
-    {nombre: "lacto ovo vegetarian"},
-    {nombre: "vegan"},
-    {nombre: "paleolithic"},
-    {nombre: "primal"},
-    {nombre: "pescatarian"},
-    {nombre: "fodmap friendly"},
-    {nombre: "whole 30"},
+    {name: "gluten free"},
+    {name: "dairy free"},
+    {name: "lacto ovo vegetarian"},
+    {name: "vegan"},
+    {name: "paleolithic"},
+    {name: "primal"},
+    {name: "pescatarian"},
+    {name: "fodmap friendly"},
+    {name: "whole 30"},
 ]
 
 

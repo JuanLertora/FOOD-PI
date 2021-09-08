@@ -44,7 +44,7 @@ async function getAll(req, res, next) {
             const informacionDB = await Recipe.findAll({
                     include: {
                       model: Diet,
-                      attributes: ["nombre"],
+                      attributes: ["name"],
                       through: {
                         attributes: [],
                       },
@@ -58,22 +58,22 @@ async function getAll(req, res, next) {
         }
     }
     else {
-        const nombreAbuscar = name.toLowerCase()
+        const nameAbuscar = name.toLowerCase()
         try {
             const APIderecetas = await APIcall()
             const FiltradoRecetaApi = APIderecetas.filter(a => {
-                if (a.title.toLowerCase().includes(nombreAbuscar)) {
+                if (a.title.toLowerCase().includes(nameAbuscar)) {
                     return a
                 }
             })
 
             const RecetasDB = await Recipe.findAll({
                 where: {
-                    title: `${nombreAbuscar}`
+                    title: `${nameAbuscar}`
                 },
                 include: {
                     model: Diet,
-                    attributes: ["nombre"],
+                    attributes: ["name"],
                     through: {
                         attributes: []
                     }
@@ -91,27 +91,27 @@ async function getAll(req, res, next) {
 
 async function Postear(req, res, next) {
     let { title,
-        descripcion,
-        puntuacion,
-        comidasaludable,
-        pasoapaso,
+        summary,
+        score,
+        healthyness,
+        steps,
         diets } = req.body;
-    if (!title || !descripcion) {
-        return res.status(404).send("Se necesita nombre y descripsion")
+    if (!title || !summary) {
+        return res.status(404).send("Se necesita name y descripsion")
     }
     try {
         const newRecipe = await Recipe.create({
             title,
-            descripcion,
-            puntuacion,
-            comidasaludable,
-            pasoapaso,
+            summary,
+            score,
+            healthyness,
+            steps,
             id: uuidv4(),
         });
         if (diets) {
             const dietDb = await Diet.findAll({
                 where: {
-                    nombre: diets
+                    name: diets
                 },
                 attributes: [
                     'id'
@@ -142,7 +142,16 @@ async function getById(req, res, next) {
             }
         })
 
-        const recipeBD = await Recipe.findByPk(uuidv4(id))
+        const recipeBD = await Recipe.findByPk(id,{
+            include: {
+                model: Diet,
+                attributes: ["name"],
+                through: {
+                    attributes: []
+                }
+            }
+
+        })
 
         const response = await Promise.all([recipeBD, FiltradoPorID]);
 

@@ -6,7 +6,8 @@ import './grid.css'
 function RecipesCards({ recipe }) {
 
   return (
-    <div className= 'MoviesGrid'>
+    <div className= 'Recetario'>
+      
       {recipe.map((recipe) => (
         recipe.map((recipe => (
           <RecipeCard
@@ -27,7 +28,7 @@ function RecipesCards({ recipe }) {
 
 const mapStateToProps = (state) => {
   return {
-    recipe: state.recipe,
+    recipe: state.recipes,
   };
 };
 

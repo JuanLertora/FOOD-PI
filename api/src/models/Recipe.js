@@ -15,23 +15,23 @@ module.exports = (sequelize) =>{
       allowNull: false,
     },
   
-    descripcion: {
+    summary: {
       type: DataTypes.TEXT,
       allowNull: false,
   
     },
   
-    puntuacion: {
+    score: {
       type: DataTypes.INTEGER,
     
   
     },
   
-    comidasaludable: {
+    healthyness: {
       type: DataTypes.STRING,
     },
     
-    pasoapaso: {
+    steps: {
       type: DataTypes.TEXT,
   },
 },{     timestamps: false   })}

@@ -1,17 +1,21 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import Searchbar from '../Searchbar';
 import './Navbar.css';
 
-export default function NavBar() {
+function NavBar() {
     return (
-        <header className="navbar">
-            <nav>
-                <ul className="list">
-                    <li className="list-item">
-                        <NavLink exact to="/home" >Home</NavLink>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    )
-}
+      <nav >
+        <div >
+          <Link to="/home">Home</Link>
+        </div>
+        <div >
+          <Searchbar/>
+          </div>
+        
+  
+      </nav>
+    );
+  };
+  
+  export default NavBar;
