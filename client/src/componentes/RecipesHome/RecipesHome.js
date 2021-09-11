@@ -7,6 +7,9 @@ import RecipesCards from "../RecipesGrid/RecipesCards";
 
 function RecipesHome({ recipe, getRecipes }) {
 
+  
+
+
     useEffect(() => {
         getRecipes()
     }, [])
@@ -14,11 +17,12 @@ function RecipesHome({ recipe, getRecipes }) {
 
     return (
         <div >
-            <NavBar />
-            <div>
+            <NavBar/>
+                <div>
                 <RecipesCards
                     recipe={recipe} />
             </div>
+
         </div>
     )
 }

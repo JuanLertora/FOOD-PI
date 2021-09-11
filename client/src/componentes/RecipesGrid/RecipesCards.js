@@ -7,9 +7,8 @@ function RecipesCards({ recipe }) {
 
   return (
     <div className= 'Recetario'>
-      
+      {console.log(recipe)}
       {recipe.map((recipe) => (
-        recipe.map((recipe => (
           <RecipeCard
           image={recipe.image}
           key={recipe.id}
@@ -18,9 +17,10 @@ function RecipesCards({ recipe }) {
           diets={recipe.diets.map((a)=>{
             return a.name
           }).join(', ')}
+          score={recipe.score}
           />
           
-          )))
+
           ))}
     </div>
   );

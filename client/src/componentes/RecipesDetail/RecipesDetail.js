@@ -16,22 +16,22 @@ function RecipeDetail({ match, recipe, getRecipeID }) {
     return (
         <div >
             <Link to={'/home'}>Home </Link>
-
-         {recipe.flat().map((a)=> {if(a !== null) 
-         return  <div>
-         <h2>{a.title} </h2>
-         <h4>Código de receta: {a.id}</h4>
-         <img src={a.image} /> 
-         <p>healthyness: {a.healthyness}</p>
-         <p>Diets: {a.diets.map((b) => {
+        {recipe.map((recipe)=>{return(
+         <div key= {recipe.id}>
+         <h2>{recipe.title} </h2>
+         <h4>Código de receta: {recipe.id}</h4>
+         <img src={recipe.image} alt={"Imagen no encontrada"} /> 
+         <p>healthyness: {recipe.healthyness}</p>
+         <p>Diets: {recipe.diets.map((b) => {
              return b.name
-         }).join(', ')}</p> 
-         <p>score: {a.score}</p>
-         <p>steps: {a.steps}</p>
-         <p>summary: {a.summary}</p>
+            }).join(', ')}</p>  
+         <p>score: {recipe.score}</p>
+         <p>steps: {recipe.steps}</p>
+         <p>summary: {recipe.summary}</p>
      </div> 
-})}
-         
+      )})}
+
+         {console.log(recipe)}
         </div>
     )
 

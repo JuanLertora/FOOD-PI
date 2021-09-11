@@ -3,20 +3,18 @@ const { MY_APIKEY } = process.env
 const { Recipe, Diet } = require('../db')
 const axios = require('axios')
 const { v4: uuidv4 } = require('uuid');
-const { Op } = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 
 async function APIcall() {
     try {
         const recipeApi = await axios.get(
-            `https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_APIKEY}&addRecipeInformation=true&number=5`
+            `https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_APIKEY}&addRecipeInformation=true&number=50`
         );
         const requiredInfo = recipeApi.data.results.map((recipe) => {
             return {
                 title: recipe.title,
-                diets: recipe.diets.map((diet) => {
-                    return { name: diet };
-                }),
+                diets: recipe.diets.map((diet)=>{return {name:diet}}),
                 healthyness: recipe.healthScore,
                 summary: recipe.summary,
                 image: recipe.image,
@@ -50,7 +48,7 @@ async function getAll(req, res, next) {
                       },
                     },
             });
-            return res.send(await Promise.all([informacionDB, informacionAPI]));
+            return res.send(await Promise.all(informacionDB.concat(informacionAPI)));
         }
         catch (err) {
             res.json({ err })
@@ -69,7 +67,7 @@ async function getAll(req, res, next) {
 
             const RecetasDB = await Recipe.findAll({
                 where: {
-                    title: `${nameAbuscar}`
+                    title:{[Sequelize.Op.like]:`%${nameAbuscar}%`}
                 },
                 include: {
                     model: Diet,
@@ -79,7 +77,7 @@ async function getAll(req, res, next) {
                     }
                 }
             })
-            return res.send(await Promise.all([FiltradoRecetaApi, RecetasDB]))
+            return res.send(await Promise.all(FiltradoRecetaApi.concat(RecetasDB)))
         }
         catch (err) {
             res.json({ err })
@@ -120,7 +118,7 @@ async function Postear(req, res, next) {
             )
             newRecipe.addDiet(dietDb)
         }
-        res.send("Fue creada con exito")
+        res.send(newRecipe)
     }
     catch (err) {
         res.json({ err })
@@ -141,22 +139,20 @@ async function getById(req, res, next) {
                 return a
             }
         })
-
-        const recipeBD = await Recipe.findByPk(id,{
-            include: {
-                model: Diet,
-                attributes: ["name"],
-                through: {
-                    attributes: []
-                }
-            }
-
-        })
-
-        const response = await Promise.all([recipeBD, FiltradoPorID]);
-
-        return res.send(response);
-
+        if(id.length > 6){
+            const recipeBD = await Recipe.findByPk(id,{
+              include: {
+              model: Diet,
+              attributes: ["name"],
+              through: {
+                attributes: [],
+              },
+    
+            }});
+            return res.json(await Promise.all([recipeBD]));
+           }else{
+          return res.json(await Promise.all(FiltradoPorID))
+           }
     } catch (err) {
         res.json({ err })
         console.error(err);
