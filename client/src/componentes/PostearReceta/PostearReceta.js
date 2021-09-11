@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect} from "react-redux";
 import { CreateRecipe, getRecipes,getByDiet } from "../../actions/index"
 import { validate } from "../../utils"
 
@@ -90,7 +90,6 @@ function RecipeCreate({ recipes,diets, postcreaterecipe, getallrecipes,getByDiet
 
     return (
         <div>
-            {console.log(recipes)}
             <Link to="/home">home</Link>
             <input type="text" name='title'
                 value={input.title} onChange={handleInputChange} placeholder='Title' />
@@ -123,7 +122,7 @@ function RecipeCreate({ recipes,diets, postcreaterecipe, getallrecipes,getByDiet
                     <option value=''>Select a diets</option>
                     {
                         diets?.map((item,i) => {
-                            return <option value={item.name} key={i}>{item.name}</option>;
+                            return <option value={item.name} key={i} >{item.name}</option>;
                         })
                     }
                 </select>
@@ -156,9 +155,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeCreate)
-
-
-
 
 
 ///function postear receta ----- TITLE SCORE 

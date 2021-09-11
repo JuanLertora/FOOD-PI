@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 
 
- function RecipesName({recipe,getRecipebyName}) {
+ function RecipesName({recipe}) {
 
         return (
             <div >
@@ -23,8 +23,6 @@ import { connect } from 'react-redux';
              <p>summary: {recipe.summary}</p>
          </div> 
           )})}
-    
-             {console.log(recipe)}
             </div>
         )
     
@@ -39,4 +37,4 @@ import { connect } from 'react-redux';
     }
     
     
-    export default connect(mapStateToProps)(RecipesName)
+    export default connect(mapStateToProps,null)(RecipesName)

@@ -8,8 +8,6 @@ import RecipesCards from "../RecipesGrid/RecipesCards";
 function RecipesHome({ recipe, getRecipes }) {
 
   
-
-
     useEffect(() => {
         getRecipes()
     }, [])

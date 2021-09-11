@@ -1,4 +1,4 @@
-import { GET_RECIPES, GET_RECIPE_DETAIL, GET_RECIPE_BY_NAME, GET_BY_DIET, CREATE_RECIPE, CLEAN_RECIPE, ORDER_RECIPES } from '../actions/index';
+import { GET_RECIPES, GET_RECIPE_DETAIL, GET_RECIPE_BY_NAME, GET_BY_DIET, CREATE_RECIPE, CLEAN_RECIPE, ORDER_RECIPES,FILTER_RECIPES } from '../actions/index';
 
 const initialState = {
     recipes: [],
@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
         case CREATE_RECIPE:
             return {
                 ...state,
-                recipes: state.recipes.concat(action.payload),
+                recipes: state.recipes.push(action.payload),
             }
 
         case CLEAN_RECIPE:
@@ -50,6 +50,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 recipes: action.payload.slice(),
+            };
+
+        case FILTER_RECIPES:
+            return {
+                ...state,
+                recipes: action.payload,
             };
 
         default:

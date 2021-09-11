@@ -1,12 +1,12 @@
 import axios from 'axios'
-import { RecipeOrder } from '../funciones';
+import { RecipeOrder,filterRecipeDiet } from '../funciones';
 export const GET_RECIPES = 'GET_RECIPES';
 export const GET_RECIPE_BY_NAME = 'GET_RECIPE_BY_NAME';
-export const GET_RECIPE_DETAIL = 'GET_COUNTRY_DETAIL';
+export const GET_RECIPE_DETAIL = 'GET_RECIPE_DETAIL';
 export const GET_BY_DIET = 'GET_BY_DIET';
 export const CREATE_RECIPE = 'CREATE_RECIPE';
 export const ORDER_RECIPES = 'ORDER_RECIPES';
-export const FILTER_RECIPES = 'FILTER_COUNTRIES';
+export const FILTER_RECIPES = 'FILTER_RECIPES';
 export const CLEAN_RECIPE = 'CLEAN_RECIPE';
 
 export function getRecipes() {
@@ -102,15 +102,15 @@ export function orderRecipes(orderTarget, receta) {
 
 
 
-// export function filterRecipes(orderTarget, criteria) {
-//     return async function (dispatch) {
-//         filterContinentActivity(orderTarget, criteria)
-//         .then((orderTarget) => {
+export function filterRecipes(orderTarget, receta) {
+    return async function (dispatch) {
+        filterRecipeDiet(orderTarget, receta)
+        .then((orderTarget) => {
                
-//             return dispatch({
-//                     type: FILTER_RECIPES,
-//                     payload: orderTarget,
-//                 })
-//             })
-//     }
-// }
+            return dispatch({
+                    type: FILTER_RECIPES,
+                    payload: orderTarget,
+                })
+            })
+    }
+}

@@ -67,7 +67,7 @@ async function getAll(req, res, next) {
 
             const RecetasDB = await Recipe.findAll({
                 where: {
-                    title:{[Sequelize.Op.like]:`%${nameAbuscar}%`}
+                    title:{[Sequelize.Op.like]:`${nameAbuscar}`}
                 },
                 include: {
                     model: Diet,
@@ -77,7 +77,7 @@ async function getAll(req, res, next) {
                     }
                 }
             })
-            return res.send(await Promise.all(FiltradoRecetaApi.concat(RecetasDB)))
+            return res.send(await Promise.all(RecetasDB.concat(FiltradoRecetaApi)))
         }
         catch (err) {
             res.json({ err })

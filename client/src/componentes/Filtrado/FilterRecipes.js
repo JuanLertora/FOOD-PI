@@ -1,9 +1,13 @@
-import React from 'react';
-import { orderRecipes, getRecipes } from '../../actions/index';
+import React, { useEffect } from 'react';
+import { orderRecipes, getRecipes,filterRecipes,getByDiet } from '../../actions/index';
 import { connect } from 'react-redux'
 
 
-function RecipesOrderFilters({orderrecipes,OrderRecipesAZ,recipes,getAllrecipes }) {
+function RecipesOrderFilters({orderrecipes,OrderRecipesAZ,diets,getAllrecipes,filterRecipesDiet,getByDiet }) {
+
+    useEffect(() => {
+        getByDiet()
+    }, [])
 
     function handleTitle(event) {
 
@@ -23,15 +27,15 @@ function RecipesOrderFilters({orderrecipes,OrderRecipesAZ,recipes,getAllrecipes 
     }
 
 
-    // function handleFilterActivities(event) {
-    //     if (event.target.value === 'activityFilter') {
-    //         return getAllrecipes();
-    //     }
-    //     filterCountries2(orderrecipes, { activities: event.target.value })
+    function handleFilterDiet(event) {
+        if (event.target.value === 'dieta') {
+            return getAllrecipes();
+        }
+        filterRecipesDiet(orderrecipes, { diets: event.target.value })
 
-    // }
+    }
 
-    
+    console.log(orderrecipes,diets)
 
     return (
         <div >
@@ -47,20 +51,20 @@ function RecipesOrderFilters({orderrecipes,OrderRecipesAZ,recipes,getAllrecipes 
             <div>
 
                 <select  onChange={handleScore}>
-                    <option label='Ordenar por Puntuacion' value='Score'></option>
+                    <option label='Ordenar por Puntuacion' value='score'></option>
                     <option value='Ascendent' >Ascendente</option>
                     <option value='Descendent' >Descendente</option>
                 </select>
 
             </div>
-            {/* <div>
-                <select className={styles.select} onChange={handleFilterActivities}>
-                    <option key="-1" label='Filtrar por Actividad Turística' value='activityFilter'></option>
-                    {activities.length ? activities.map((activity, i) => (
-                        <option key={i} value={activity.name} label={activity.name}></option>
+            <div>
+                <select  onChange={handleFilterDiet}>
+                    <option key="-1" label='Filtrar por Dieta' value='dieta'></option>
+                    {diets.length ? diets.map((diets, i) => (
+                        <option key={i} value={diets.name} label={diets.name}></option>
                     )) : null}
                 </select>
-            </div> */}
+            </div>
         </div>
     )
 
@@ -71,7 +75,7 @@ const mapStateToProps = ((state) => {
 
     return {
         orderrecipes: state.orderrecipes,
-        recipes: state.recipes
+        diets: state.diets
     }
 })
 
@@ -79,7 +83,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         OrderRecipesAZ: (orderTarget, receta) => dispatch(orderRecipes(orderTarget, receta)),
         getAllrecipes: () => dispatch(getRecipes()),
-        // filterCountries2: (countries, criteria) => dispatch(filterCountries(countries, criteria))
+        filterRecipesDiet: (orderTarget, recipe) => dispatch(filterRecipes(orderTarget, recipe)),
+        getByDiet:()=>dispatch(getByDiet())
+
     }
 }
 
