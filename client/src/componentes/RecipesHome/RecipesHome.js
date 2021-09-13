@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { getRecipes } from "../../actions";
 import NavBar from "../NavBar/NavBar";
 import RecipesCards from "../RecipesGrid/RecipesCards";
+import './home.css'
 
 
 function RecipesHome({ recipe, getRecipes }) {
@@ -16,7 +17,7 @@ function RecipesHome({ recipe, getRecipes }) {
     return (
         <div >
             <NavBar/>
-                <div>
+                <div className='home'>
                 <RecipesCards
                     recipe={recipe} />
             </div>

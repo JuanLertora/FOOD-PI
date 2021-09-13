@@ -14,30 +14,34 @@ function NavBar({getRecipebyName}) {
 
 
   function handleChange(event) {
+  
     setActualState(event.target.value)
 }
 
 
 function handleClik() {
 
-  getRecipebyName(ActualState)
+ getRecipebyName(ActualState)
   
 }
 
 
 
     return (
-      <nav >
-        <div >
-          <NavLink to="/home" >Home</NavLink>
-          <NavLink to="/recipe">Create a New Recipe</NavLink>
-          <div>
+      <nav className='navbar'>
+        <div className='navbar2'>
+        <div className='navlink'>
+          <NavLink to="/home" className='navlink1' >Home</NavLink>
+          <NavLink to="/recipe" className='navlink1'>Create a New Recipe</NavLink>
+          </div>
+          <div className='inputs'>
             <FilterRecipes/>
           </div>
-          <div>
-          <input value={ActualState} type='text' placeholder='buscador' onChange={handleChange}/>
-          <NavLink to='/recipename'><button onClick={handleClik}>Search</button></NavLink>
+          <div className='busqueda'>
+          <input value={ActualState} type='text' placeholder='buscador' className='inputsearch' onChange={handleChange}/>
+          <NavLink to='/recipename' ><button className='botonsearch' onClick={handleClik}>Search</button></NavLink>
           </div>
+
 
         </div>
   

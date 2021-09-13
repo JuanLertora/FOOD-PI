@@ -8,8 +8,8 @@ export default function Inicio() {
         <div className='pagina'>
 
             {/* <img className='fondo' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUNB1-EwZ95YO7DxHKME8Jcug01bR3GnK82Q&usqp=CAU'/> */}
-                  <Link to='/home'>
-                    <div className='inicio'>Busca tu receta favorita!</div>
+                  <Link to='/home' className='inicio'>
+                    <button className='boton'><div className='inicio'>Busca tu receta favorita!</div></button>
                     </Link>           
         </div>
     )

@@ -3,40 +3,90 @@
     width: 100%;
     top: 0;
     left: 0;
-    background-color: #303236;
+    background-color: rgba(0, 0, 0, 0.527);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
     box-sizing: border-box;
 }
 
 .navbar nav {
     height: 100%;
+    
 }
 
-.list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+
+
+.navbar2{
+    display: inline-flex;
+    width: 100%;
+}
+
+.inputs{
+    padding-left:10%;
+    padding-top: 2px;
+
+}
+
+.inputsfiltrado{
+    display: inline-flex;
+}
+
+
+.inputsfiltradores{
+    border-radius: 10%;
+    padding-left: 30%;
+    height: 30px;
+    
+}
+
+
+
+
+.selectores{
+    background:#2d2d2d;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:rgba(255, 255, 255, 0.829);
+    height: 30px;
+
+}
+    
+
+.busqueda{
+    padding-top: 2px;
     display: flex;
-    flex-flow: row;
-    align-items: center;
-    height: 100%;
+    position: relative;
+    left: 40%;
+    margin-right: 20%;
 }
 
-.list-item {
-    margin: 0;
-    display: flex;
-    height: 100%;
-    width: auto;
-    align-items: center;
-}
-
-.list-item a {
+.botonsearch{
+    height: 30px;
+    border-radius: 10%;
+    background-color: rgba(0, 0, 0, 0.527);
     color: white;
-    height: 100%;
-    padding: 16px 10px;
-    border-bottom: 4px solid transparent;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+
+}
+
+.inputsearch{
+    background:#2d2d2d;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:rgba(255, 255, 255, 0.829);
+    height: 25px;
+    border-radius: 10%;
+}
+
+
+.navlink1{
+    color: rgba(255, 255, 255, 0.829);
+    padding-left: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+
+
+
 }
 

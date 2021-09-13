@@ -27,31 +27,32 @@ function RecipesCards({ recipe }) {
 
   return (
           <div >
-              <div >
-                  <button onClick={() => showPages(currentPage > 1 ?
-                      currentPage - 1 : currentPage)}>{'☚'}</button>
-    
-                  <button  onClick={() => showPages(currentPage < pages ?
-                      currentPage + 1 : currentPage)}>{`☛`}</button>
-              </div>
           
           <div >
               {recipestate && recipestate.map((recipe) => (
-
+                <div  className="Recetario">
           <RecipeCard
           image={recipe.image}
           key={recipe.id}
           id={recipe.id}
           title={recipe.title}
-          diets={recipe.diets.map((a)=>{
+          diets={recipe.diets.map(a=>{
             return a.name
           }).join(', ')}
           score={recipe.score}
           />
+          </div>
           
 
           ))}
     </div>
+              <div className='pages'>
+                  <button onClick={() => showPages(currentPage > 1 ?
+                      currentPage - 1 : currentPage)} className='paginado'>{'Prev'}</button>
+    
+                  <button  onClick={() => showPages(currentPage < pages ?
+                      currentPage + 1 : currentPage)} className='paginado2'>{`Next`}</button>
+              </div>
     </div>
   );
 };

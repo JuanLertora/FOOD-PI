@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { orderRecipes, getRecipes,filterRecipes,getByDiet } from '../../actions/index';
 import { connect } from 'react-redux'
+import '../NavBar/Navbar.css'
 
 
 function RecipesOrderFilters({orderrecipes,OrderRecipesAZ,diets,getAllrecipes,filterRecipesDiet,getByDiet }) {
@@ -38,27 +39,27 @@ function RecipesOrderFilters({orderrecipes,OrderRecipesAZ,diets,getAllrecipes,fi
     console.log(orderrecipes,diets)
 
     return (
-        <div >
-            <div>
+        <div className='inputsfiltrado'>
+            <div  className='inputsfiltradores'>
 
-                <select  onChange={handleTitle}>
+                <select className='selectores' onChange={handleTitle}>
                     <option label='Ordenar por Nombre' value='Title'></option>
                     <option value='Ascendent'>Ascendente</option>
                     <option value='Descendent'>Descendente</option>
                 </select>
 
             </div>
-            <div>
+            <div className='inputsfiltradores'>
 
-                <select  onChange={handleScore}>
+                <select className='selectores' onChange={handleScore}>
                     <option label='Ordenar por Puntuacion' value='score'></option>
                     <option value='Ascendent' >Ascendente</option>
                     <option value='Descendent' >Descendente</option>
                 </select>
 
             </div>
-            <div>
-                <select  onChange={handleFilterDiet}>
+            <div className='inputsfiltradores'>
+                <select  className='selectores' onChange={handleFilterDiet}>
                     <option key="-1" label='Filtrar por Dieta' value='dieta'></option>
                     {diets.length ? diets.map((diets, i) => (
                         <option key={i} value={diets.name} label={diets.name}></option>

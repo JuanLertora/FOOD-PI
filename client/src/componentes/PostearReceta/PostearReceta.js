@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect} from "react-redux";
 import { CreateRecipe, getRecipes,getByDiet } from "../../actions/index"
 import { validate } from "../../utils"
+import './post.css'
 
 
 function RecipeCreate({ recipes,diets, postcreaterecipe, getallrecipes,getByDiet }) {
@@ -90,34 +91,49 @@ function RecipeCreate({ recipes,diets, postcreaterecipe, getallrecipes,getByDiet
 
     return (
         <div>
-            <Link to="/home">home</Link>
+            <div className='home'>
+            <Link to="/home" className='link'>home</Link>
+            </div>
+            <div className='formulario'>
+                <div className='row'>
+            <form onSubmit={handleSubmit}>
+                <div className='col'>
+            <label>Titulo: </label>
             <input type="text" name='title'
                 value={input.title} onChange={handleInputChange} placeholder='Title' />
             {errors.title && (<p>{errors.title}</p>)}
-            <form onSubmit={handleSubmit}>
+            </div>
 
-                <div>
+                <div className='col'>
+                    <label>Descripcion:  </label>
                     <input type="text" name="summary" value={input.summary} onChange={handleInputChange} placeholder='Summary' />
                     {errors.summary && (<p>{errors.summary}</p>)}
                 </div>
 
-                <div>
-
+                <div className='col'> 
+                <label>Saludable: </label>
                     <input type="number" name="healthyness" value={input.healthyness} onChange={handleInputChange} placeholder='healthyness' />
                     {errors.healthyness && (<p>{errors.healthyness}</p>)}
                 </div>
 
-                <div>
+                <div className='col'>
+                <label>Puntuacion:  </label>
 
                     <input type="number" name="score" value={input.score} onChange={handleInputChange} placeholder='score' />
                     {errors.score && (<p>{errors.score}</p>)}
                 </div>
 
-                <div>
+                <div className='col'>
+                <label>Paso a Paso: </label>
                     <input type="text" name="steps" value={input.steps} onChange={handleInputChange} placeholder='steps' />
                     {errors.steps && (<p>{errors.steps}</p>)}
                 </div>
-
+                <div className='col'>                   
+                     <label>Tipo de dieta: </label>
+                    <input type="text" name="diets" value={input.diets} onChange={onClickSubmit} placeholder='Diets' />
+                    {errors.diets && (
+                        <p>{errors.diets}</p>
+                    )}
                 <select onChange={handleDietsSelection}>
                     <option value=''>Select a diets</option>
                     {
@@ -126,14 +142,13 @@ function RecipeCreate({ recipes,diets, postcreaterecipe, getallrecipes,getByDiet
                         })
                     }
                 </select>
-                <input type="text" name="diets" value={input.diets} onChange={onClickSubmit} placeholder='Diets' />
-                {errors.diets && (
-                    <p>{errors.diets}</p>
-                )}
+                </div>
+
                 <input type="submit" value='Create a new recipe' />
             </form>
         </div>
-    
+        </div>
+        </div>
     )
     
 }

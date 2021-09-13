@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { getRecipeDetail } from '../../actions';
-
+import './recipedetail.css'
+import {Star} from "../../utils/iconos";
 
 
 
@@ -14,20 +15,22 @@ function RecipeDetail({ match, recipe, getRecipeID }) {
     }, [])
 
     return (
-        <div >
-            <Link to={'/home'}>Home </Link>
+        <div className='card' >
+            <div className='homes'>
+            <Link to={'/home'} className='link'>Home </Link>
+            </div>
         {recipe.map((recipe)=>{return(
          <div key= {recipe.id}>
          <h2>{recipe.title} </h2>
-         <h4>Código de receta: {recipe.id}</h4>
-         <img src={recipe.image} alt={"Imagen no encontrada"} /> 
-         <p>healthyness: {recipe.healthyness}</p>
-         <p>Diets: {recipe.diets.map((b) => {
+         <img src={recipe.image} alt={"Imagen no encontrada"} className='img'/> 
+         <p>Saludable: {recipe.healthyness}</p>
+         <p>Tipo de Dieta: {recipe.diets.map((b) => {
              return b.name
             }).join(', ')}</p>  
-         <p>score: {recipe.score}</p>
-         <p>steps: {recipe.steps}</p>
-         <p>summary: {recipe.summary}</p>
+         <p><Star/> {recipe.score}</p>
+         <p>Paso a Paso: {recipe.steps}</p>
+         <p>Descripcion: {recipe.summary}</p>
+            <h4>Código de receta: {recipe.id}</h4>
      </div> 
       )})}
 

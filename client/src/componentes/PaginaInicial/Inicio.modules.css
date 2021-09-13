@@ -1,9 +1,17 @@
 body{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe_2s2KT7pwIEMMVaH_SPE7UwvnKvG_zghTr2wxFvMOwPmsfF-LRLPlneonU8yw047Gr8&usqp=CAU');
-    background-size: auto;
+    background-image: url('https://dbdzm869oupei.cloudfront.net/img/vinylrugs/preview/29207.png');
+    background-size: 100% 100%;
+    background-attachment: fixed;
 }
 
 .inicio{
     font-size: 32px;
+    text-decoration: none;
+}
+
+.boton{
+    margin-top: 20%;
+    margin-left: 40%;
+
 }
 

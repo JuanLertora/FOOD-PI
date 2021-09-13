@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import '../RecipesDetail/recipedetail.css'
+import {Star} from "../../utils/iconos";
 
 
 
@@ -8,19 +10,21 @@ import { connect } from 'react-redux';
 
         return (
             <div >
-                <Link to={'/home'}>Home </Link>
+                <div className='homes'>
+                <Link to={'/home'} className='link'>Home </Link>
+                </div>
             {recipe.map((recipe)=>{return(
-             <div key= {recipe.id}>
+             <div key= {recipe.id} className='card'>
              <h2>{recipe.title} </h2>
-             <h4>Código de receta: {recipe.id}</h4>
              <img src={recipe.image} alt={"Imagen no encontrada"} /> 
-             <p>healthyness: {recipe.healthyness}</p>
-             <p>Diets: {recipe.diets.map((b) => {
+             <p>Saludable: {recipe.healthyness}</p>
+             <p>Tipo de dieta: {recipe.diets.map((b) => {
                  return b.name
                 }).join(', ')}</p>  
-             <p>score: {recipe.score}</p>
-             <p>steps: {recipe.steps}</p>
-             <p>summary: {recipe.summary}</p>
+             <p><Star/> {recipe.score}</p>
+             <p>Paso a paso: {recipe.steps}</p>
+             <p>Descripcion: {recipe.summary}</p>
+                <h4>Código de receta: {recipe.id}</h4>
          </div> 
           )})}
             </div>

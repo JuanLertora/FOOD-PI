@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom";
 import React from 'react';
+import '../RecipesGrid/grid.css'
+import {Star} from "../../utils/iconos";
+
 
 export function RecipeCard({ title,diets,id,image,score }) {
   return (
-    <div >
+    <div className='cartas'>
         <div>
+        <img className='imagenrota' src={image} alt='Falta Imagen'/>
         <h2>{title}</h2>
-        <h5>Tipo de dieta:{diets}</h5>
-        <h6>Puntuacion:{score}</h6>
-        <img src={image} alt={"Imagen no encontrada"}/>
+        <h5>Tipo de dieta:<br/>{diets}</h5>
+        <h4><Star/>{score}</h4>
         </div>
-        <Link to={`/recipe/` + id}> Detalles
+        <Link to={`/recipe/` + id} ><button className='botondetalles'>Detalles</button>
       </Link>
     </div>
   );
