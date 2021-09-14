@@ -143,8 +143,7 @@ function RecipeCreate({ recipes,diets, postcreaterecipe, getallrecipes,getByDiet
                     }
                 </select>
                 </div>
-
-                <input type="submit" value='Create a new recipe' />
+                <input type="submit" value='Create a new recipe' className='enviarformulario'/>
             </form>
         </div>
         </div>

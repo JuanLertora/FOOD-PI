@@ -29,6 +29,11 @@
 
 }
 
+
+.enviarformulario{
+    border-radius: 10%;
+}
+
 .row {
     position: relative;
     width: 100%;

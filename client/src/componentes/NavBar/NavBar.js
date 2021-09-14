@@ -20,8 +20,10 @@ function NavBar({getRecipebyName}) {
 
 
 function handleClik() {
-
- getRecipebyName(ActualState)
+  
+  if(ActualState){
+  getRecipebyName(ActualState)
+  }
   
 }
 

@@ -1,7 +1,7 @@
 .navbar {
     height: 56px;
     width: 100%;
-    top: 0;
+    padding-top: 2%;
     left: 0;
     background-color: rgba(0, 0, 0, 0.527);
     display: flex;
@@ -62,10 +62,11 @@
 
 .botonsearch{
     height: 30px;
-    border-radius: 10%;
+    border-radius: 20%;
     background-color: rgba(0, 0, 0, 0.527);
     color: white;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
 
 
 }

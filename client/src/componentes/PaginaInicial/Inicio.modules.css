@@ -1,5 +1,5 @@
 body{
-    background-image: url('https://dbdzm869oupei.cloudfront.net/img/vinylrugs/preview/29207.png');
+    background-image: url('./fondo/image-from-rawpixel-id-2760902-jpeg.jpg');
     background-size: 100% 100%;
     background-attachment: fixed;
 }
@@ -11,7 +11,19 @@ body{
 
 .boton{
     margin-top: 20%;
-    margin-left: 40%;
-
+    margin-left: 35%;
+    cursor: pointer;
+    border-radius: 10%;
+        cursor: pointer;
+        padding: 1rem 5rem;
+        border-radius: 3.75rem;
+        line-height: 2.5rem;
+        font-size: 2rem;
+     font-weight: 600;
+        
+        border: 1px solid #348001;
+        background-image: linear-gradient(-180deg, #e79639 0%, #c0720c 100%);
+                 font-style: italic;  
+    
 }
 
