@@ -163,5 +163,4 @@ module.exports = {
     APIcall,
     getAll,
     Postear,
-    getById
-}
+    getById}
