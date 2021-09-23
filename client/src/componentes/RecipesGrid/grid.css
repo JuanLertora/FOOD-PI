@@ -14,7 +14,8 @@
 }
 
 img{
-    max-width: 100%;
+    margin: 0%;
+    width: 100%;
 }
 
 
@@ -70,3 +71,4 @@ justify-content: center;
     background-color: rgba(0, 0, 0, 0.527);
     font-family: cursive;
 }
+
