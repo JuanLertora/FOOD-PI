@@ -11,16 +11,19 @@ function RecipesHome({ recipe, getRecipes }) {
   
     useEffect(() => {
         getRecipes()
+     //eslint-disable-next-line react-hooks/exhaustive-deps
+
     }, [])
 
 
     return (
         <div >
+            {console.log(recipe)}
             <NavBar/>
                 <div className='home'>
                 <RecipesCards
-                    recipe={recipe} />
-            </div>
+                    recipe={recipe} /> 
+            </div> 
 
         </div>
     )

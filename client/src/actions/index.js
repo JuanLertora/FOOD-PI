@@ -10,6 +10,7 @@ export const FILTER_RECIPES = 'FILTER_RECIPES';
 export const CLEAN_RECIPE = 'CLEAN_RECIPE';
 
 export function getRecipes() {
+
     return async function (dispatch) {
         return axios.get(`http://localhost:3001/recipe`)
             .then((response) => {

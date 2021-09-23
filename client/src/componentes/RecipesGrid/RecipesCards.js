@@ -15,14 +15,13 @@ function RecipesCards({ recipe }) {
       const index = pageNum * recipesPerPage + 1;
       setRecipeState(recipe.slice(index - recipesPerPage - 1, index - 1));
       setCurrentPage(pageNum)
-
   }
 
 
   useEffect(() => {
 
       showPages(1)
-
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipe])
 
   return (
@@ -30,7 +29,7 @@ function RecipesCards({ recipe }) {
           
           <div >
               {recipestate && recipestate.map((recipe) => (
-                <div  className="Recetario">
+                <div  className="Recetario" key={recipe.id}>
           <RecipeCard
           image={recipe.image}
           key={recipe.id}
@@ -56,6 +55,7 @@ function RecipesCards({ recipe }) {
     </div>
   );
 };
+
 
 const mapStateToProps = (state) => {
   return {

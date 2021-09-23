@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect} from "react-redux";
 import { CreateRecipe, getRecipes,getByDiet } from "../../actions/index"
 import { validate } from "../../utils"
 import './post.css'
+import { Star } from "../../utils/iconos";
 
 
 function RecipeCreate({ recipes,diets, postcreaterecipe, getallrecipes,getByDiet }) {
@@ -78,6 +79,7 @@ function RecipeCreate({ recipes,diets, postcreaterecipe, getallrecipes,getByDiet
         event.preventDefault();
         postcreaterecipe(input)
         getallrecipes()
+        alert('Su receta fue creada con exito')
     }
 
     function onClickSubmit() {
@@ -89,10 +91,13 @@ function RecipeCreate({ recipes,diets, postcreaterecipe, getallrecipes,getByDiet
     }
 
 
+
+
+
     return (
         <div>
             <div className='home'>
-            <Link to="/home" className='link'>home</Link>
+            < NavLink to="/home" className='link'>home</NavLink>
             </div>
             <div className='formulario'>
                 <div className='row'>
